@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>یافتن خانه جدید</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    .search-container {
+      display: flex;
+      align-items: center;
+      background-color: #f0f0f5;
+      border-radius: 8px;
+      padding: 8px 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 310px;
+      height: 35px;
+    }
+
+    .search-icon {
+      width: 20px; /* عرض آیکن */
+      height: 20px; /* ارتفاع آیکن */
+      margin-right: 8px; /* فاصله بین آیکن و input */
+      color: #673ab7; /* رنگ آیکن */
+    }
+
+    .search-input {
+      border: none; /* حذف حاشیه input */
+      background: none; /* حذف پس‌زمینه input */
+      font-family: sans-serif; /* فونت مشابه */
+      font-size: 16px; /* اندازه‌ی فونت */
+      color: #333; /* رنگ متن */
+      outline: none; /* حذف outline هنگام فوکوس */
+      flex-grow: 1; /* اجازه می‌دهد input فضا را پر کند */
+    }
+
+    .search-input::placeholder {
+      color: #aaa; /* رنگ placeholder */
+    }
+  </style>
+  <body>
+    <footer class="bg-white text-dark pt-5 pb-4">
+      <div class="container">
+        <div class="row">
+          
+          <!-- لوگو -->
+          <div class="col-md-3 d-flex align-items-start mb-4">
+            <h5 class="fw-bold">
+              <img src="https://cdn-icons-png.flaticon.com/512/9468/9468980.png" alt="Logo" style="width: 24px;">
+              Estatery
+            </h5>
+          </div>
+    
+          <!-- ستون‌های لینک -->
+          <div class="col-md-9">
+            <!-- ردیف اول -->
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">SELL A HOME</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Request an offer</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Reviews</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Stories</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">BUY, RENT AND SELL</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Buy and sell properties</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Rent home</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Builder trade-up</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">ABOUT</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Company</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">How it works</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Investors</a></li>
+                </ul>
+              </div>
+            </div>
+    
+            <!-- ردیف دوم -->
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">BUY A HOME</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Buy</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Finance</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">TERMS & PRIVACY</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Trust & Safety</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">RESOURCES</h6>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Guides</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">FAQ</a></li>
+                  <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- کپی‌رایت و آیکون‌ها -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center border-top pt-3">
+          <p class="mb-2 mb-md-0 text-muted">©2021 Estatery. All rights reserved</p>
+          <div>
+            <a href="#" class="text-muted me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-muted me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-muted me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-muted"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+  </body>
+</html>
