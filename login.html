@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Estatery</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+      /* همان استایل‌های قبلی با تغییرات لازم */
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      h2 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #333;
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      input {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        border: 1.8px solid #ddd;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: #7065f0;
+        box-shadow: 0 0 5px rgba(112, 101, 240, 0.4);
+      }
+
+      .check-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: green;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .check-icon.visible {
+        opacity: 1;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+      }
+
+      button.submit-btn {
+        padding: 0.75rem;
+        background: #7065f0;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        transition: .3s ease-in-out;
+      }
+
+      button.submit-btn:hover {
+        background: #5a4edc;
+      }
+
+      .link {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      .link a {
+        color: #7065f0;
+        text-decoration: none;
+      }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Email"
+                        required
+                    >
+                    <span class="check-icon" id="loginEmailCheck">✔️</span>
+                </div>
+                <div id="loginEmailError" class="error"></div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Password"
+                        required
+                    >
+                    <span class="check-icon" id="loginPasswordCheck">✔️</span>
+                </div>
+                <div id="loginPasswordError" class="error"></div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div class="link">
+                    Don't have an account?
+                    <a href="#" onclick="redirectToSignUp()">Register</a>
+                </div>
+            </form>
+        </div>
+        <script>
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function handleInputValidation(
+        inputId,
+        checkId,
+        errorId,
+        validatorFn,
+        errorMessage
+      ) {
+        const input = document.getElementById(inputId);
+        const check = document.getElementById(checkId);
+        const error = document.getElementById(errorId);
+
+        input.addEventListener("input", () => {
+          const value = input.value.trim();
+          if (validatorFn(value)) {
+            check.classList.add("visible");
+            error.textContent = "";
+          } else {
+            check.classList.remove("visible");
+            error.textContent = errorMessage;
+          }
+        });
+      }
+
+      const isValidPassword = (value) => value.length >= 6;
+
+      handleInputValidation(
+        "loginEmail",
+        "loginEmailCheck",
+        "loginEmailError",
+        isValidEmail,
+        "Invalid email format."
+      );
+      handleInputValidation(
+        "loginPassword",
+        "loginPasswordCheck",
+        "loginPasswordError",
+        isValidPassword,
+        "Password must be at least 6 characters."
+      );
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          Swal.fire({
+            icon: "success",
+            title: "Logged in!",
+            text: "Welcome back 👋",
+            confirmButtonColor: "#7065F0",
+          }).then(() => {
+            location.reload(); // صفحه رفرش می‌شود
+          });
+          this.reset();
+          document
+            .querySelectorAll(".check-icon")
+            .forEach((el) => el.classList.remove("visible"));
+        });
+        function redirectToSignUp() {
+          window.location.href = "signup.html";
+        }
+        </script>
+    </body>
+</html>

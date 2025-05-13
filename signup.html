@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register - Estatery</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+    /* همان استایل‌های قبلی با تغییرات لازم */
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F5F5F5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    input {
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border: 1.8px solid #ddd;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #7065F0;
+      box-shadow: 0 0 5px rgba(112, 101, 240, 0.4);
+    }
+
+    .check-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: green;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .check-icon.visible {
+      opacity: 1;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    button.submit-btn {
+      padding: 0.75rem;
+      background: #7065F0;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      transition: .3s ease-in-out;
+    }
+
+    button.submit-btn:hover {
+      background: #5a4edc;
+    }
+
+    .link {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .link a {
+      color: #7065F0;
+      text-decoration: none;
+    }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Signup</h2>
+            <form id="registerForm">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Full Name"
+                        required
+                    >
+                    <span class="check-icon" id="registerNameCheck">✔️</span>
+                </div>
+                <div id="registerNameError" class="error"></div>
+                <div class="input-group">
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Email"
+                        required
+                    >
+                    <span class="check-icon" id="registerEmailCheck">✔️</span>
+                </div>
+                <div id="registerEmailError" class="error"></div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Password"
+                        required
+                    >
+                    <span class="check-icon" id="registerPasswordCheck">✔️</span>
+                </div>
+                <div id="registerPasswordError" class="error"></div>
+                <button type="submit" class="submit-btn">Register</button>
+                <div class="link">
+                    Already have an account?
+                    <a href="#" onclick="redirectTologin()">Login</a>
+                </div>
+            </form>
+        </div>
+        <script>
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function handleInputValidation(inputId, checkId, errorId, validatorFn, errorMessage) {
+      const input = document.getElementById(inputId);
+      const check = document.getElementById(checkId);
+      const error = document.getElementById(errorId);
+
+      input.addEventListener("input", () => {
+        const value = input.value.trim();
+        if (validatorFn(value)) {
+          check.classList.add("visible");
+          error.textContent = "";
+        } else {
+          check.classList.remove("visible");
+          error.textContent = errorMessage;
+        }
+      });
+    }
+
+    const isNotEmpty = val => val.length > 0;
+    const isValidPassword = val => val.length >= 6;
+
+    handleInputValidation("registerName", "registerNameCheck", "registerNameError", isNotEmpty, "Name is required.");
+    handleInputValidation("registerEmail", "registerEmailCheck", "registerEmailError", isValidEmail, "Invalid email format.");
+    handleInputValidation("registerPassword", "registerPasswordCheck", "registerPasswordError", isValidPassword, "Password must be at least 6 characters.");
+
+  document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  Swal.fire({
+    icon: 'success',
+    title: 'Registered!',
+    text: 'Your account has been created 🎉',
+    confirmButtonColor: '#7065F0'
+  }).then(() => {
+    location.reload(); // صفحه رفرش می‌شود
+  });
+  this.reset();
+  document.querySelectorAll(".check-icon").forEach(el => el.classList.remove("visible"));
+});
+        function redirectTologin() {
+          window.location.href = "login.html";
+        }
+        </script>
+    </body>
+</html>
